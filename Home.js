@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ScrollView, View } from 'react-native'
 
-import { Header, ListItem, Icon } from 'react-native-elements'
+import { Header, ListItem, Icon, Input, Button } from 'react-native-elements'
 
 export const Home = () => {
   const [todos, setTodos] = useState([
@@ -29,7 +29,14 @@ export const Home = () => {
   return (
     <>
       <Header centerComponent={{ text: 'ALL TODOS', style: { color: 'white' } }} />
-      <ScrollView>
+      <ScrollView style={{ paddingTop: 8 }}>
+        <Input placeholder='Add new item' />
+        <Button
+          icon={<Icon name='add' size={15} color='white' />}
+          title='Add'
+          containerStyle={{ paddingHorizontal: 8 }}
+        />
+
         {todos.map((item, i) => (
           <ListItem key={i} onPress={() => toggleStatus(item)} bottomDivider>
             {item.isDone ? (

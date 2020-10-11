@@ -16,7 +16,6 @@ export const Home = () => {
   ])
 
   const toggleStatus = (item) => {
-    console.log(item)
     const newTodos = todos.map((todo) => {
       if (todo.name === item.name) {
         todo.isDone = !todo.isDone

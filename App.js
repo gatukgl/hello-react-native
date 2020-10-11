@@ -1,7 +1,5 @@
-import React from "react";
-
-import { NativeRouter, Route } from "react-router-native";
-import { Text } from 'react-native-elements'
+import React from 'react'
+import { NativeRouter, Route } from 'react-router-native'
 
 import { Login } from './Login'
 import { Home } from './Home'
@@ -9,8 +7,8 @@ import { Home } from './Home'
 export default function App() {
   return (
     <NativeRouter>
-      <Route exact path="/" component={Login}/>
-      <Route exact path="/home" component={Home}/>
+      <Route exact path='/' component={Login} />
+      <Route exact path='/home' component={Home} />
     </NativeRouter>
-  );
+  )
 }

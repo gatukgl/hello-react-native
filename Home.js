@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { ScrollView } from 'react-native'
-
 import { Header, ListItem, Icon, Input, Button, Text, Card } from 'react-native-elements'
 
 export const Home = () => {

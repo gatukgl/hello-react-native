@@ -9,7 +9,10 @@ const Login = withRouter(({ history }) => {
   const [username, onUsernameChange] = useState('')
 
   const goToHomePage = () => {
-    history.push('/home')
+    history.push({
+      pathname: '/home',
+      state: { username: username }
+    })
   }
 
   return (

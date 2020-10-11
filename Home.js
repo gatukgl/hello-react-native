@@ -1,30 +1,52 @@
-import React from "react";
-import { ScrollView } from "react-native";
+import React, { useState } from 'react'
+import { ScrollView, View } from 'react-native'
 
-import { Text, Header, Card, ListItem, CheckBox } from "react-native-elements";
+import { Header, ListItem, Icon } from 'react-native-elements'
 
 export const Home = () => {
-  const items = ["feed a cat", "plant a tree"];
+  const [todos, setTodos] = useState([
+    {
+      name: 'a',
+      isDone: false
+    },
+    {
+      name: 'b',
+      isDone: true
+    }
+  ])
+
+  const toggleStatus = (item) => {
+    console.log(item)
+    const newTodos = todos.map((todo) => {
+      if (todo.name === item.name) {
+        todo.isDone = !todo.isDone
+        console.log(todo)
+      }
+      return todo
+    })
+
+    setTodos(newTodos)
+  }
 
   return (
     <>
-      <Header
-        centerComponent={{ text: "ALL TODOS", style: { color: "white" } }}
-      />
+      <Header centerComponent={{ text: 'ALL TODOS', style: { color: 'white' } }} />
       <ScrollView>
-        <Card>
-          <Card.Title>TODOs</Card.Title>
-          <Card.Divider />
-          {items.map((item, i) => (
-            <>
-              <ListItem keyItem={i} bottomDivider>
-                <CheckBox checked />
-                <ListItem.Title>{item}</ListItem.Title>
-              </ListItem>
-            </>
-          ))}
-        </Card>
+        {todos.map((item, i) => (
+          <ListItem key={i} onPress={() => toggleStatus(item)} bottomDivider>
+            {item.isDone ? (
+              <Icon name='check' color='green' type='font-awesome' />
+            ) : (
+              <Icon name='circle-o-notch' color='gray' type='font-awesome' />
+            )}
+            <ListItem.Content>
+              <ListItem.Title style={{ fontWeight: 'bold' }}>{item.name}</ListItem.Title>
+              <ListItem.Subtitle>{item.name}</ListItem.Subtitle>
+            </ListItem.Content>
+            <ListItem.Chevron color='white' />
+          </ListItem>
+        ))}
       </ScrollView>
     </>
-  );
-};
+  )
+}

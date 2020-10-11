@@ -19,7 +19,6 @@ export const Home = () => {
     const newTodos = todos.map((todo) => {
       if (todo.name === item.name) {
         todo.isDone = !todo.isDone
-        console.log(todo)
       }
       return todo
     })
